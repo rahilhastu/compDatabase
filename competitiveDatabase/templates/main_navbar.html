@@ -1,0 +1,23 @@
+<section class="banner" role="banner">
+  <header id="header">
+    <div class="header-content clearfix"> <a class="logo" href="{% url 'home' %}" style="color:#80D941; ">Home</a>
+      <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+          <li><a href="{% url 'home' %}#services" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Services</a></li>
+          <li><a href="{% url 'home' %}#intro" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">About</a></li>
+          <!-- <li><a href="#works">Works</a></li> -->
+          <li><a href="{% url 'home' %}#teams" style="color: #80D941;letter-spacing: 2px;font-size: 13px; ">Our Team</a></li>
+          {% if username %}
+          <li><a href="{% url 'alter' %}" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Alter</a></li>
+           <!-- <li><a href="#contact">Contact</a></li> -->
+          {% endif %}
+          {% if username %}
+          <li><a href="{% url 'logout' %}" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'home' %}#testimonials" style="color: #80D941;letter-spacing: 2px;font-size: 13px;">Top Users</a></li>
+          {% endif %}
+          
+        </ul>
+      </nav>
+      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+  </header>

@@ -1,0 +1,60 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Questions</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
+    <link href="{% static 'css/boot.css' %}" rel="stylesheet">
+<!-- <link rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+
+    <!-- Custom styles for this template -->
+       <link href="{% static 'css/dash.css' %}" rel="stylesheet">
+    <link href="{% static 'css/grid.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+{% include 'navbar.html' %}
+
+
+    <div class="container">
+        <br><br>
+      <h1>Question</h1>
+      <h5>Different Contests and the Questions in the contests<br><p>Total : {{ total }}</p> </h5><br>
+            
+          <form method="POST" action="{% url 'questions' %}">
+            {% csrf_token %}
+              <input type="text" name="site"  size="20" autofocus placeholder="Site_ID"/>             
+              <input type="text" name="contest_code"  size="20" autofocus placeholder="Contest"/>             
+              <input type="text" name="question_code"  size="20" autofocus placeholder="Question"/>             
+            <button style="margin-left: 40px;" type="submit" class='btn btn-default' >OK</button>
+          </form>
+
+          <div class="table-responsive">
+            <table class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>Site</th>
+                  <th>Contest Code</th>
+                  <th>Question Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for x in data %}
+                <tr>
+                  <td>{{ x.0 }}</td>
+                  <td>{{ x.1 }}</td>
+                  <td>{{ x.2 }}</td>
+                </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+  </body>
+</html>
